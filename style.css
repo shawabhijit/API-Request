@@ -1,0 +1,95 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+body{
+    width: 100%;
+    height: 100%;
+    background-color: #212125;
+    color: #ffffff;
+}
+h3{
+    font-size: 2vw;
+    color: #e3C6D6;
+}
+form {
+    width: 20%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+}
+
+form input,button{
+    padding: 12px;
+    border-radius: 10px;
+    background-color: rgb(182, 179, 179);
+    border: none;
+}
+#error{
+    color: red;
+}
+form button{
+    width:50%;
+    margin-left: 23%;
+    background-color: white;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 700;
+}
+form button:hover{
+    background-color: greenyellow;
+    transform: scale(1.2);
+}
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    min-height: 400px;
+    margin-left: 35%;
+    background-color: rgb(222, 216, 216);
+    border-radius: 20px;
+}
+.upper-content{
+    width: 100%;
+    height: 50%;
+    padding: 30px;
+    display: flex;
+    gap: 3vw;
+}
+.img{
+    width: 150px;
+    height: 150px;
+    border: 2px solid black;
+    border-radius: 50%;
+}
+.img img{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+.information h1{
+    font-size: 2.6vw;
+    color: rgba(253, 129, 6, 0.9);
+    margin-bottom: 10px;
+    margin-left: 10px;
+}
+.information .followers{
+    display: flex;
+    justify-content: space-evenly;
+    gap: 10px;
+}
+.inf {
+    display: flex;
+}
+
+.lower-content{
+    padding: 30px;
+    color: #504e4f;
+    font-weight: 700;
+    font-size: 19px;
+}

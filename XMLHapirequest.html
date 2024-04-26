@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Git Card</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h3>put your GITHUB Login name</h3>
+    <form method="GET" action="">
+        <input type="text" name="" id="gitname" placeholder="github profile name">
+        <p id="error"></p>
+        <button type="submit">Submit</button>
+    </form>
+    <div class="container">
+        <div class="upper-content">
+            <div class="img">
+                <img src="" alt="" id="image">
+            </div>
+            <div class="information">
+                <h1 id="name"></h1>
+                <div class="followers">
+                    <span class="inf">Followers : <p id="followers"></p></span>
+                    <span class="inf">Following : <p id="following"></p></span>
+                    <span class="inf">Repos : <p id="repos"></p></span>
+                </div>
+            </div>
+        </div>
+        <div class="lower-content">
+            <p id="bio"></p>
+        </div>
+    </div>
+</body>
+
+<script>
+    const form = document.querySelector('form');
+    const gitname = document.querySelector('#gitname');
+    const follower = document.querySelector("#followers");
+    const following = document.querySelector("#following");
+    const repos = document.querySelector("#repos");
+    const error = document.querySelector("#error");
+    const name = document.querySelector("#name");
+    const img = document.querySelector("#image");
+    const bio = document.querySelector("#bio");
+    
+    document.querySelector(".container").style.display = "none";
+    let gitnamevalue;
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        gitnamevalue = gitname.value.trim();
+        if (gitnamevalue) {
+            error.innerHTML= ""
+            document.querySelector(".container").style.display = "flex";
+            const requestUrl = `https://api.github.com/users/${gitnamevalue}`;
+            const xhr = new XMLHttpRequest();
+            xhr.open('GET', requestUrl);
+            xhr.onreadystatechange = function () {
+                console.log(xhr.readyState);
+                if (xhr.readyState === 4) {
+                    const data = JSON.parse(this.response);
+                    console.log(data)
+                    name.innerHTML = data.name;
+                    follower.innerHTML = data.followers;
+                    following.innerHTML = data.following;
+                    repos.innerHTML = data.public_repos;
+                    bio.innerHTML = data.bio;
+                    img.src = data.avatar_url;
+                }
+            }
+            xhr.send()
+        }
+        else {
+            error.innerHTML = "please give your login name"
+        }
+    })
+</script>
+
+</html>
